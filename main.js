@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-
 var playerTurn = document.querySelector('.player-turn');
 const slots = document.querySelectorAll('.slot');
     const winningArrays = [
@@ -72,20 +70,21 @@ const slots = document.querySelectorAll('.slot');
         [11, 18, 25, 32],
         [12, 19, 26, 33],
         [13, 20, 27, 34],
-    ]
-    function stacking() {
-    for (let i = 0; i < slots.length - 7; i++) {
-        slots[i].addEventListener('click', (e) => {
-            const targetIndex = i + 35;
+    ];
 
-            let stackIndex = targetIndex;
-            while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
-                stackIndex -= 7;
-            }
-            slots[stackIndex].style.backgroundColor = 'red';
-            slots[stackIndex].classList.add('taken');
-        });
-    };
+    function stacking() {
+        for (let i = 0; i < slots.length - 7; i++) {
+            slots[i].addEventListener('click', (e) => {
+                const targetIndex = i + 35;
+
+                let stackIndex = targetIndex;
+                while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
+                    stackIndex -= 7;
+                }
+                slots[stackIndex].style.backgroundColor = 'red';
+                slots[stackIndex].classList.add('taken');
+            });
+        }
     }
 
     function checkwins() {
@@ -100,59 +99,36 @@ const slots = document.querySelectorAll('.slot');
                 slot3.classList.contains('slot taken') &&
                 slot4.classList.contains('slot taken')
             ) {
-                result.innerHTML = 'Player One Wins!'
+                document.getElementById('result').innerHTML = 'Player One Wins!'
             }
         }
     }
-stacking()
-checkwins()
     
     function startGame() {
-        // Add code to start the game
-        // For example, you can initialize game variables, reset the board, and display initial messages
         playerTurn.textContent = "Player 1's turn";
-        // Reset the board by removing any previous color classes
         slots.forEach(slot => {
             slot.style.backgroundColor = '';
             slot.classList.remove('taken');
         });
-        // Add event listeners to the slots for gameplay
         stacking();
         checkwins();
-        gameRunning = true; // Set gameRunning to true when the game starts
     }
 
-    function stopGame() {
-        // Add code to stop the game
-        // For example, you can clean up the game state, remove event listeners, and display end game messages
-        playerTurn.textContent = "Game stopped";
-        // Remove event listeners from the slots
-        slots.forEach(slot => {
-            slot.removeEventListener('click', stacking);
-        });
-        gameRunning = false; // Set gameRunning to false when the game stops
+        function stopGame() {
+        const confirmed = confirm("Are you sure you want to stop?");
+        if (confirmed) {
+            window.location.href = "index.html";
+        }
     }
 
-    const startButton = document.getElementById('start-button');
-    const stopButton = document.getElementById('stop-button');
-
-    startButton.addEventListener('click', () => {
-        if (!gameRunning) {
-            startGame();
-            // Optionally, you can redirect to the game page after starting the game
-            window.location.href = 'game.html';
-        }
-    });
-
-    stopButton.addEventListener('click', () => {
-        if (gameRunning) {
-            stopGame();
-            // Add code to perform any additional actions when the game is stopped
-            // For example, you can redirect back to the start page using window.location.href
-            window.location.href = 'index.html';
-        }
-    });
+document.addEventListener("DOMContentLoaded", function() {
+    const startButton = document.getElementById("start-button");
+    startButton.addEventListener("click", startGame);
+    
+    const stopButton = document.getElementById("stop-button");
+    stopButton.addEventListener("click", stopGame);
 });
+
 
 
 
