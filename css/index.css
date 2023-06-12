@@ -1,0 +1,20 @@
+.intro {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.enter-name {
+    padding-right: 3%;
+}
+
+label {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.explanation {
+    border: thin dotted black;
+    padding: 3%;
+}
