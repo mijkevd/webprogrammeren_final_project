@@ -117,7 +117,7 @@ const slots = document.querySelectorAll('.slot');
         function stopGame() {
         const confirmed = confirm("Are you sure you want to stop?");
         if (confirmed) {
-            window.location.href = "index.html";
+            window.location.href = "index.php";
         }
     }
 
