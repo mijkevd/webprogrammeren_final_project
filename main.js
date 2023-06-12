@@ -106,6 +106,53 @@ const slots = document.querySelectorAll('.slot');
     }
 stacking()
 checkwins()
+    
+    function startGame() {
+        // Add code to start the game
+        // For example, you can initialize game variables, reset the board, and display initial messages
+        playerTurn.textContent = "Player 1's turn";
+        // Reset the board by removing any previous color classes
+        slots.forEach(slot => {
+            slot.style.backgroundColor = '';
+            slot.classList.remove('taken');
+        });
+        // Add event listeners to the slots for gameplay
+        stacking();
+        checkwins();
+        gameRunning = true; // Set gameRunning to true when the game starts
+    }
+
+    function stopGame() {
+        // Add code to stop the game
+        // For example, you can clean up the game state, remove event listeners, and display end game messages
+        playerTurn.textContent = "Game stopped";
+        // Remove event listeners from the slots
+        slots.forEach(slot => {
+            slot.removeEventListener('click', stacking);
+        });
+        gameRunning = false; // Set gameRunning to false when the game stops
+    }
+
+    const startButton = document.getElementById('start-button');
+    const stopButton = document.getElementById('stop-button');
+
+    startButton.addEventListener('click', () => {
+        if (!gameRunning) {
+            startGame();
+            // Optionally, you can redirect to the game page after starting the game
+            window.location.href = 'game.html';
+        }
+    });
+
+    stopButton.addEventListener('click', () => {
+        if (gameRunning) {
+            stopGame();
+            // Add code to perform any additional actions when the game is stopped
+            // For example, you can redirect back to the start page using window.location.href
+            window.location.href = 'index.html';
+        }
+    });
 });
+
 
 
