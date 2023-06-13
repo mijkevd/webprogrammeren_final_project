@@ -1,5 +1,15 @@
 <?php
-    include 'interact.php';
+/* Header */
+$page_title = 'Connect four';
+$navigation = Array(
+    'active' => 'Game',
+    'items' => Array(
+        'Home screen' => '/WP23/webprogrammeren_final_project/index.php',
+        'Game' => '/WP23/webprogrammeren_final_project/game.php',
+    )
+);
+include __DIR__ . '/tpl/head.php';
+include __DIR__ . '/tpl/body_start.php';
 ?>
 
 <!doctype html>
@@ -16,7 +26,7 @@
 
 </head>
 <body>
-<h3 class="player-turn"></h3>
+<div class="player-turn"></div>
 
 <div class="container">
 
@@ -80,6 +90,7 @@
 </div>
 </div>
 <div id="result"></div>
+<button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
 </body>
 </html>
