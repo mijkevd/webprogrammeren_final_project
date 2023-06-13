@@ -4,8 +4,8 @@ $page_title = 'Connect four';
 $navigation = Array(
     'active' => 'Home screen',
 'items' => Array(
-'Home screen' => '/WP23/webprogrammeren_final_project/index.php',
-'Game' => '/WP23/webprogrammeren_final_project/game.php',
+'Home screen' => '../webprogrammeren_final_project/index.php',
+'Game' => '../webprogrammeren_final_project/game.php',
 )
 );
 include __DIR__ . '/tpl/head.php';
