@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-const winningArrays = [
+const winningArrays = [ //All possible arrays to have four in a row
         [0, 1, 2, 3],
         [41, 40, 39, 38],
         [7, 8, 9, 10],
@@ -80,8 +80,10 @@ const winningArrays = [
                 while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
                     stackIndex -= 7;
                 }
+                console.log(stackIndex)
                 slots[stackIndex].style.backgroundColor = 'red';
                 slots[stackIndex].classList.add('taken');
+                checkwins()
             });
         }
     }
@@ -98,6 +100,7 @@ const winningArrays = [
                 slot3.classList.contains('taken') &&
                 slot4.classList.contains('taken')
             ) {
+                const confirmed = confirm("Player has won!");
                 result.textContent = "Player 1 won!";
             }
         }
