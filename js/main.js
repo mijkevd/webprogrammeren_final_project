@@ -1,6 +1,5 @@
-var playerTurn = document.querySelector('.player-turn');
-const slots = document.querySelectorAll('.slot');
-    const winningArrays = [
+document.addEventListener("DOMContentLoaded", function() {
+const winningArrays = [
         [0, 1, 2, 3],
         [41, 40, 39, 38],
         [7, 8, 9, 10],
@@ -94,12 +93,12 @@ const slots = document.querySelectorAll('.slot');
             const slot3 = slots[winningArrays[x][2]];
             const slot4 = slots[winningArrays[x][3]];
             if (
-                slot1.classList.contains('slot taken') &&
-                slot2.classList.contains('slot taken') &&
-                slot3.classList.contains('slot taken') &&
-                slot4.classList.contains('slot taken')
+                slot1.classList.contains('taken') &&
+                slot2.classList.contains('taken') &&
+                slot3.classList.contains('taken') &&
+                slot4.classList.contains('taken')
             ) {
-                document.getElementById('result').innerHTML = 'Player One Wins!'
+                result.textContent = "Player 1 won!";
             }
         }
     }
@@ -111,7 +110,6 @@ const slots = document.querySelectorAll('.slot');
             slot.classList.remove('taken');
         });
         stacking();
-        checkwins();
     }
 
         function stopGame() {
@@ -121,13 +119,14 @@ const slots = document.querySelectorAll('.slot');
         }
     }
 
-document.addEventListener("DOMContentLoaded", function() {
+    var playerTurn = document.querySelector('.player-turn');
+    const slots = document.querySelectorAll('.slot');
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", startGame);
-    
+    var result = document.querySelector('#result')
     const stopButton = document.getElementById("stop-button");
     stopButton.addEventListener("click", stopGame);
-    stacking();
+    checkwins();
 });
 
 
