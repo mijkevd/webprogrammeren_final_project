@@ -100,19 +100,37 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('taken') &&
                 slot4.classList.contains('taken')
             ) {
-                const confirmed = confirm("Player has won!");
-                result.textContent = "Player 1 won!";
+                const currentPlayer = gamesPlayed % 2 === 0 ? 'Player One' : 'Player Two';
+
+            if (currentPlayer === 'Player One') {
+                playerOneWins++;
+            } else {
+                playerTwoWins++;
+            }
+
+            // Display the win message and update the game statistics
+            document.getElementById('result').innerHTML = currentPlayer + ' Wins!';
+            document.getElementById('games-played').innerHTML = 'Games Played: ' + gamesPlayed;
+            document.getElementById('player-one-wins').innerHTML = 'Player One Wins: ' + playerOneWins;
+            document.getElementById('player-two-wins').innerHTML = 'Player Two Wins: ' + playerTwoWins;
             }
         }
     }
     
     function startGame() {
-        playerTurn.textContent = "Player 1's turn";
-        slots.forEach(slot => {
-            slot.style.backgroundColor = '';
-            slot.classList.remove('taken');
-        });
-        stacking();
+        gamesPlayed++;
+
+    document.getElementById('games-played').innerHTML = 'Games Played: ' + gamesPlayed;
+    document.getElementById('player-one-wins').innerHTML = 'Player One Wins: ' + playerOneWins;
+    document.getElementById('player-two-wins').innerHTML = 'Player Two Wins: ' + playerTwoWins;
+
+    playerTurn.textContent = "Player 1's turn";
+    slots.forEach(slot => {
+        slot.style.backgroundColor = '';
+        slot.classList.remove('taken');
+    });
+    stacking();
+    checkwins();
     }
 
         function stopGame() {
