@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+var currentplayer = 1
+
 const winningArrays = [ //All possible arrays to have four in a row
         [0, 1, 2, 3],
         [41, 40, 39, 38],
@@ -77,12 +79,20 @@ const winningArrays = [ //All possible arrays to have four in a row
                 const targetIndex = i + 35;
 
                 let stackIndex = targetIndex;
-                while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
+                while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'yellow') {
                     stackIndex -= 7;
                 }
+                if (currentplayer == 2) {
+                    slots[stackIndex].style.backgroundColor = 'yellow';
+                    currentplayer = 2
+                }
+                else if (currentplayer == 2) {
+                    slots[stackIndex].style.backgroundColor = 'yellow';
+                    slots[stackIndex].classList.add('taken');
+                    currentplayer = 1
+                }
+            }
                 console.log(stackIndex)
-                slots[stackIndex].style.backgroundColor = 'red';
-                slots[stackIndex].classList.add('taken');
                 checkwins()
             });
         }
@@ -103,6 +113,23 @@ const winningArrays = [ //All possible arrays to have four in a row
                 const confirmed = confirm("Player has won!");
                 result.textContent = "Player 1 won!";
             }
+            if (
+                slot1.classList.contains('red') &&
+                slot2.classList.contains('red') &&
+                slot3.classList.contains('red') &&
+                slot4.classList.contains('red')
+            ) {
+                const confirmed = confirm("Player 2 has won!");
+                result.textContent = "Player 2 won!";
+            }
+            if (
+                slot1.classList.contains('yellow') &&
+                slot2.classList.contains('yellow') &&
+                slot3.classList.contains('yellow') &&
+                slot4.classList.contains('yellow')
+            ) {
+                const confirmed = confirm("Player 1 has won!");
+                result.textContent = "Player 1 won!";
         }
     }
     
