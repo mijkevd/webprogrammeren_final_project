@@ -91,11 +91,19 @@ const winningArrays = [ //All possible arrays to have four in a row
         for (let i = 0; i < slots.length - 7; i++) {
             slots[i].addEventListener('click', (e) => {
                 const targetIndex = i + 35;
-
                 let stackIndex = targetIndex;
                 while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
                     stackIndex -= 7;
+                 if (currentplayer == 1) {
+                    slots[stackIndex].style.backgroundColor = 'yellow';
+                    currentplayer = 2
                 }
+                else if (currentplayer == 2) {
+                    slots[stackIndex].style.backgroundColor = 'yellow';
+                    slots[stackIndex].classList.add('taken');
+                    currentplayer = 1
+                }
+            }
                 console.log(stackIndex)
                 slots[stackIndex].style.backgroundColor = 'red';
                 slots[stackIndex].classList.add('taken');
@@ -117,6 +125,24 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot4.classList.contains('taken')
             ) {
                 const confirmed = confirm("Player has won!");
+                result.textContent = "Player 1 won!";
+            }
+            else if (
+                slot1.classList.contains('red') &&
+                slot2.classList.contains('red') &&
+                slot3.classList.contains('red') &&
+                slot4.classList.contains('red')
+            ) {
+                const confirmed = confirm("Player 2 has won!");
+                result.textContent = "Player 2 won!";
+            }
+            else if (
+                slot1.classList.contains('yellow') &&
+                slot2.classList.contains('yellow') &&
+                slot3.classList.contains('yellow') &&
+                slot4.classList.contains('yellow')
+            ) {
+                const confirmed = confirm("Player 1 has won!");
                 result.textContent = "Player 1 won!";
             }
         }
