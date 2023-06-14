@@ -111,8 +111,8 @@ const winningArrays = [ //All possible arrays to have four in a row
             // Display the win message and update the game statistics
             document.getElementById('result').innerHTML = currentPlayer + ' Wins!';
             document.getElementById('games-played').innerHTML = 'Games Played: ' + gamesPlayed;
-            document.getElementById('player-one-wins').innerHTML = 'Player One Wins: ' + playerOneWins;
-            document.getElementById('player-two-wins').innerHTML = 'Player Two Wins: ' + playerTwoWins;
+            document.getElementById('inputname').innerHTML = 'Player One Wins: ' + playerOneWins;
+            document.getElementById('inputname').innerHTML = 'Player Two Wins: ' + playerTwoWins;
             }
         }
     }
@@ -121,8 +121,8 @@ const winningArrays = [ //All possible arrays to have four in a row
         gamesPlayed++;
 
     document.getElementById('games-played').innerHTML = 'Games Played: ' + gamesPlayed;
-    document.getElementById('player-one-wins').innerHTML = 'Player One Wins: ' + playerOneWins;
-    document.getElementById('player-two-wins').innerHTML = 'Player Two Wins: ' + playerTwoWins;
+    document.getElementById('inputname').innerHTML = 'Player One Wins: ' + playerOneWins;
+    document.getElementById('inputname').innerHTML = 'Player Two Wins: ' + playerTwoWins;
 
     playerTurn.textContent = "Player 1's turn";
     slots.forEach(slot => {
