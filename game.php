@@ -24,75 +24,43 @@ include __DIR__ . '/tpl/body_start.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
+
+
+<div class="pd-40"></div>
+    <div class="row">
+        <div class="game col-md-6">
+            <?php
+            $stones = json_decode(file_get_contents('data/stones.json'), true);
+            echo '<table>';
+            $i = 0;
+            $tr_list = [0, 7, 14, 21, 28, 35];
+            $tr_close_list = [6, 13, 20, 27, 34, 41];
+            foreach ($stones as $stone) {
+                if(in_array($i, $tr_list)) {
+                    echo '<tr>';
+                }
+                $id = $stone['id'];
+                echo '<td id="$id" class="slot">';
+                //echo '<td id="$stone['id']"></td>';
+                if(in_array($i, $tr_close_list)) {
+                    echo '</tr>';
+                }
+                $i = $i + 1;
+            }
+            echo '</table>';
+            ?>
+        </div>
+    </div>
+</div>
+
+
 <body>
 <div class="player-turn"></div>
-
-<div class="container">
-
-<div class="game">
-    <table>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-        <tr>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-            <td class="slot"></td>
-        </tr>
-    </table>
-</div>
-</div>
 <div id="result"></div>
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
-<p id="games-played">Games Played: 0</p>
 <p id="inputname">Player One Wins: 0</p>
 <p id="inputgame">Player Two Wins: 0</p>
 </body>
 </html>
+
