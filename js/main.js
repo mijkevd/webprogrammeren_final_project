@@ -97,29 +97,32 @@ const winningArrays = [ //All possible arrays to have four in a row
 
     function handleClick(e) {
         const targetIndex = Array.from(slots).indexOf(e.target);
-        let stackIndex = targetIndex;
+        const columnIndex = targetIndex % 7;
+        let stackIndex = columnIndex + 35;
 
-        while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
+        while (stackIndex >= columnIndex && slots[stackIndex].style.backgroundColor !== '') {
             stackIndex -= 7;
         }
 
-        if (currentplayer === 1) {
-            slots[stackIndex].style.backgroundColor = 'yellow';
-            currentplayer = 2;
-        } else if (currentplayer === 2) {
-            slots[stackIndex].style.backgroundColor = 'red';
-            currentplayer = 1;
-        }
+        if (stackIndex >= columnIndex) {
+            if (currentplayer === 1) {
+                slots[stackIndex].style.backgroundColor = 'yellow';
+                currentplayer = 2;
+            } else if (currentplayer === 2) {
+                slots[stackIndex].style.backgroundColor = 'red';
+                currentplayer = 1;
+            }
 
-        slots[stackIndex].classList.add('taken');
-        checkwins();
+            slots[stackIndex].classList.add('taken');
+            checkwins();
 
-        // Disable click event for the current slot
-        slots[targetIndex].removeEventListener('click', handleClick);
+            // Disable click event for the current slot
+            slots[targetIndex].removeEventListener('click', handleClick);
 
-        // Enable click event for other slots
-        for (let i = 0; i < slots.length - 7; i++) {
-            slots[i].addEventListener('click', handleClick);
+            // Enable click event for other slots
+            for (let i = 0; i < slots.length - 7; i++) {
+                slots[i].addEventListener('click', handleClick);
+            }
         }
     }
 
