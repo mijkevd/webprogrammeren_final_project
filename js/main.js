@@ -1,7 +1,9 @@
 $(document).ready(function() {
     display_board();
+    display_names();
     window.setInterval(function () {
         display_board();
+        display_names();
     }, 5000);
 });
 
@@ -13,6 +15,17 @@ function display_board() {
         board_container.append(data.html);
     });
 }
+
+function display_names() {
+    let names_html = $.post('readnames.php', {call_now: "True"});
+    let name_container = $('.name-container');
+    names_html.done(function (data) {
+        name_container.empty();
+        name_container.append(data.html);
+    });
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
 const winningArrays = [ //All possible arrays to have four in a row
