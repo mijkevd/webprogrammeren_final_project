@@ -19,11 +19,14 @@ include __DIR__ . '/tpl/body_start.php';
     <meta charset="utf-8">
     <title>Connect Four</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="js/main.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
+
+<header class="intro">Connect Four</header>
 
 <form action="index.php" type="GET">
     <button id="submit" type="submit" class="btn btn-primary">Add player 1</button>
@@ -72,6 +75,17 @@ foreach($names as $key => $value){
             echo '</table>';
             ?>
         </div>
+        <div class="col-md-3 explanation">
+            <p>
+                You play the game in pairs, so 1 against 1. <br />
+                Each has 21 yellow or red stones, the one with the yellow stones always starts with the first move,
+                after that it is always a turn. <br />
+                A move may not be made twice in a row. <br />
+                The person who is the first to get four stones of their color in a row wins. <br />
+                This is allowed horizontally, vertically and diagonally. <br />
+                5 in a row or more, does not count.
+            </p>
+        </div>
     </div>
 </div>
 
@@ -83,11 +97,13 @@ foreach($names as $key => $value){
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
 
-<div class="name-container"></div>
+<div class="name-container container"></div>
 
-<p id="games-played">Games Played: 0</p>
-<p id="inputname">Player < Wins: 0</p>
-<p id="inputgame">Player Two Wins: 0</p>
+<div class="container">
+    <p id="games-played">Games Played: 0</p>
+    <p id="inputname">Player < Wins: 0</p>
+    <p id="inputgame">Player Two Wins: 0</p>
+</div>
 </body>
 </html>
 
