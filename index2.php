@@ -41,6 +41,7 @@ if (isset($_POST['submit2'])) {
 
     <div class="container">
         <div class="row">
+            <div class="col-md-6 enter-name">
                 <form id='user-form' action="index2.php" method="POST">
                     <div class="form-group">
                         <label for="inputname">Player 2, enter your name</label>
