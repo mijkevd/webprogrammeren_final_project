@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function() {
 var currentplayer = 1
 =======
@@ -18,8 +17,6 @@ function display_board() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
->>>>>>> 26904faf00a83bd92d3861896bfdf8d83a774230
 const winningArrays = [ //All possible arrays to have four in a row
         [0, 1, 2, 3],
         [41, 40, 39, 38],
