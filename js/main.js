@@ -103,7 +103,6 @@ const winningArrays = [ //All possible arrays to have four in a row
         while (stackIndex >= columnIndex && slots[stackIndex].style.backgroundColor !== '') {
             stackIndex -= 7;
         }
-
         if (stackIndex >= columnIndex) {
             if (currentplayer === 1) {
                 slots[stackIndex].style.backgroundColor = 'yellow';
@@ -114,8 +113,7 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slots[stackIndex].classList.add('red');
                 currentplayer = 1;
             }
-            checkwins();
-
+            checkwins()
             // Disable click event for the current slot
             slots[targetIndex].removeEventListener('click', handleClick);
 
