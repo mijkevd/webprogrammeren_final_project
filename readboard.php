@@ -3,9 +3,12 @@ if (isset($_POST['call_now'])) {
     // Read articles
     $json_file = file_get_contents("data/stones.json");
     $stones = json_decode($json_file, true);
+    $currentplayer = 1;
+
 
     // Generate HTML
     $board_html = '<table>';
+    $color = '';
     $i = 0;
     $tr_list = [0, 7, 14, 21, 28, 35];
     $tr_close_list = [6, 13, 20, 27, 34, 41];
@@ -24,11 +27,14 @@ if (isset($_POST['call_now'])) {
     }
     $board_html .= '</table>';
 
+    $currentplayer = $currentplayer == 1 ? 2 : 1;
 
     // Save html into array
     $export_data = [
         'html' => $board_html
     ];
+    $json_file = file_get_contents("data/names.json");
+    $names = json_decode($json_file, true);
     // Return JSON
     header('Content-Type: application/json');
     echo json_encode($export_data);
