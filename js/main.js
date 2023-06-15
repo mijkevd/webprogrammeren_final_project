@@ -107,13 +107,13 @@ const winningArrays = [ //All possible arrays to have four in a row
         if (stackIndex >= columnIndex) {
             if (currentplayer === 1) {
                 slots[stackIndex].style.backgroundColor = 'yellow';
+                slots[stackIndex].classList.add('yellow');
                 currentplayer = 2;
             } else if (currentplayer === 2) {
                 slots[stackIndex].style.backgroundColor = 'red';
+                slots[stackIndex].classList.add('red');
                 currentplayer = 1;
             }
-
-            slots[stackIndex].classList.add('taken');
             checkwins();
 
             // Disable click event for the current slot
@@ -134,15 +134,6 @@ const winningArrays = [ //All possible arrays to have four in a row
             const slot3 = slots[winningArrays[x][2]];
             const slot4 = slots[winningArrays[x][3]];
             if (
-                slot1.classList.contains('taken') &&
-                slot2.classList.contains('taken') &&
-                slot3.classList.contains('taken') &&
-                slot4.classList.contains('taken')
-            ) {
-                const confirmed = confirm("Player " + currentplayer + " has won!");
-                result.textContent = "Player " + currentplayer + " won!";
-            }
-            else if (
                 slot1.classList.contains('red') &&
                 slot2.classList.contains('red') &&
                 slot3.classList.contains('red') &&
