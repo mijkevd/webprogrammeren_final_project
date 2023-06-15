@@ -47,7 +47,8 @@ include __DIR__ . '/tpl/body_start.php';
 <div id="result"></div>
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
-
+    
+<p id="games-played">Games Played: 0</p>
 <p id="inputname">Player < Wins: 0</p>
 <p id="inputgame">Player Two Wins: 0</p>
 
