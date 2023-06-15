@@ -18,7 +18,7 @@ include __DIR__ . '/tpl/body_start.php';
     <div class="container">
         <div class="row">
             <div class="col-md-6 enter-name">
-                <form id='user-form' method="POST">
+                <form id='user-form' method="GET">
                     <div class="form-group">
                         <label for="inputname">Enter your name</label>
                         <input type="text" class="form-control" id="inputname" name="name">
