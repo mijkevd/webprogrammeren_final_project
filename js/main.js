@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-var currentplayer = 1
 $(document).ready(function() {
     display_board();
     window.setInterval(function () {
@@ -16,6 +14,7 @@ function display_board() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", function() {
 const winningArrays = [ //All possible arrays to have four in a row
         [0, 1, 2, 3],
         [41, 40, 39, 38],
@@ -88,30 +87,42 @@ const winningArrays = [ //All possible arrays to have four in a row
         [13, 20, 27, 34],
     ];
 
+    let currentplayer = 1;
+
     function stacking() {
         for (let i = 0; i < slots.length - 7; i++) {
-            slots[i].addEventListener('click', (e) => {
-                const targetIndex = i + 35;
-                let stackIndex = targetIndex;
-                while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
-                    stackIndex -= 7;
-                 if (currentplayer == 1) {
-                    slots[stackIndex].style.backgroundColor = 'yellow';
-                    currentplayer = 2
-                }
-                else if (currentplayer == 2) {
-                    slots[stackIndex].style.backgroundColor = 'red';
-                    slots[stackIndex].classList.add('taken');
-                    currentplayer = 1
-                }
-            }
-                console.log(stackIndex)
-                slots[stackIndex].style.backgroundColor = 'red';
-                slots[stackIndex].classList.add('taken');
-                checkwins()
-            });
+            slots[i].addEventListener('click', handleClick);
         }
     }
+
+    function handleClick(e) {
+        const targetIndex = Array.from(slots).indexOf(e.target);
+        let stackIndex = targetIndex;
+
+        while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'red') {
+            stackIndex -= 7;
+        }
+
+        if (currentplayer === 1) {
+            slots[stackIndex].style.backgroundColor = 'yellow';
+            currentplayer = 2;
+        } else if (currentplayer === 2) {
+            slots[stackIndex].style.backgroundColor = 'red';
+            currentplayer = 1;
+        }
+
+        slots[stackIndex].classList.add('taken');
+        checkwins();
+
+        // Disable click event for the current slot
+        slots[targetIndex].removeEventListener('click', handleClick);
+
+        // Enable click event for other slots
+        for (let i = 0; i < slots.length - 7; i++) {
+            slots[i].addEventListener('click', handleClick);
+        }
+    }
+
 
     function checkwins() {
         for (let x = 0; x < winningArrays.length; x++) {
@@ -125,8 +136,8 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('taken') &&
                 slot4.classList.contains('taken')
             ) {
-                const confirmed = confirm("Player has won!");
-                result.textContent = "Player 1 won!";
+                const confirmed = confirm("Player " + currentplayer + " has won!");
+                result.textContent = "Player " + currentplayer + " won!";
             }
             else if (
                 slot1.classList.contains('red') &&
@@ -143,8 +154,8 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('yellow') &&
                 slot4.classList.contains('yellow')
             ) {
-                const confirmed = confirm("Player " + currentplayer + " has won!");
-                result.textContent = "Player " + currentplayer + " won!";
+                const confirmed = confirm("Player 1 has won!");
+                result.textContent = "Player 1 won!";
             }
         }
     }
