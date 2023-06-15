@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-    // Read articles
+    // Read stones
     $json_file = file_get_contents("data/stones.json");
     $stones = json_decode($json_file, true);
     // Get article key

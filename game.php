@@ -41,6 +41,7 @@ include __DIR__ . '/tpl/body_start.php';
                 }
                 $id = $stone['id'];
                 echo '<td id="<?php echo $id; ?>" class="slot">';
+                echo '<button id="submit" type="submit" class="btn btn-primary">Throw stone</button>';
                 //echo '<td id="$stone['id']"></td>';
                 if(in_array($i, $tr_close_list)) {
                     echo '</tr>';
@@ -57,6 +58,7 @@ include __DIR__ . '/tpl/body_start.php';
 <body>
 <div class="player-turn"></div>
 <div id="result"></div>
+<button id="add-player" href="index.php">Add player</button>
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
     
