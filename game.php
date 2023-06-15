@@ -46,12 +46,9 @@ foreach($names as $key => $value){
 }
 ?>
 
-
-
-
 <div class="pd-40"></div>
     <div class="row">
-        <div class="game container">
+        <div id="game-container" class="game container">
             <?php
             $stones = json_decode(file_get_contents('data/stones.json'), true);
             echo '<table>';
@@ -64,7 +61,7 @@ foreach($names as $key => $value){
                 }
                 $id = $stone['id'];
                 echo '<td id="'. $id. '" class="slot">';
-                echo '<button id="submit" type="submit" class="btn btn-primary">Throw stone</button>';
+                echo '<button id="'. $id. '" type="submit" class="btn btn-primary">Throw stone</button>';
                 echo '</td>';
                 //echo '<td id="$stone['id']"></td>';
                 if(in_array($i, $tr_close_list)) {
