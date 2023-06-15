@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 var currentplayer = 1
-
 const winningArrays = [ //All possible arrays to have four in a row
         [0, 1, 2, 3],
         [41, 40, 39, 38],
@@ -82,12 +81,12 @@ const winningArrays = [ //All possible arrays to have four in a row
                 while (stackIndex >= 0 && slots[stackIndex].style.backgroundColor === 'yellow') {
                     stackIndex -= 7;
                 }
-                if (currentplayer == 2) {
+                if (currentplayer == 1) {
                     slots[stackIndex].style.backgroundColor = 'yellow';
                     currentplayer = 2
                 }
                 else if (currentplayer == 2) {
-                    slots[stackIndex].style.backgroundColor = 'yellow';
+                    slots[stackIndex].style.backgroundColor = 'red';
                     slots[stackIndex].classList.add('taken');
                     currentplayer = 1
                 }
