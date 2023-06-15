@@ -147,6 +147,13 @@ const winningArrays = [ //All possible arrays to have four in a row
 
     let currentplayer = 1;
 
+    function updateTurn(newTurn) {
+        $.ajax({
+            url: 'update_turn.php',
+            method: 'POST',
+            data: {newTurn: newTurn}
+        })
+    }
     function stacking() {
         for (let i = 0; i < slots.length - 7; i++) {
             slots[i].addEventListener('click', handleClick);
@@ -166,11 +173,11 @@ const winningArrays = [ //All possible arrays to have four in a row
             if (currentplayer === 1) {
                 slots[stackIndex].style.backgroundColor = 'yellow';
                 slots[stackIndex].classList.add('yellow');
-                currentplayer = 2;
+                updateTurn(2)
             } else if (currentplayer === 2) {
                 slots[stackIndex].style.backgroundColor = 'red';
                 slots[stackIndex].classList.add('red');
-                currentplayer = 1;
+               updateTurn(1)
             }
             checkwins()
             // Disable click event for the current slot

@@ -3,7 +3,9 @@ if (isset($_POST['call_now'])) {
     // Read articles
     $json_file = file_get_contents("data/stones.json");
     $stones = json_decode($json_file, true);
-    $currentplayer = 1;
+    $json_turn = file_get_contents("data/stones.json");
+    $player = json_decode($json_file, true);
+    $currentplayer = $player['turn'];
 
 
     // Generate HTML
@@ -17,7 +19,8 @@ if (isset($_POST['call_now'])) {
             $board_html .= '<tr>';
         }
         $id = $stone['id'];
-        $board_html .=  '<td id="' . $id . '" class="slot">';
+        $board_html .=  '<td id="' . $id . '" class="slot';
+        $board_html .= $color . '">';
         $board_html .= '<button id="' . $id . '" type="submit" class="stone-button">Throw</button>';
         $board_html .= '</td>';
         if (in_array($i, $tr_close_list)) {
@@ -25,13 +28,20 @@ if (isset($_POST['call_now'])) {
         }
         $i = $i + 1;
     }
+    if ($color === 'red') {
+        $color = 'yellow';
+    }
+    else if ($color === 'yellow') {
+        $color = 'red';
+    }
     $board_html .= '</table>';
 
     $currentplayer = $currentplayer == 1 ? 2 : 1;
 
     // Save html into array
     $export_data = [
-        'html' => $board_html
+        'html' => $board_html,
+        'currentplayer' => $currentplayer
     ];
     $json_file = file_get_contents("data/names.json");
     $names = json_decode($json_file, true);
