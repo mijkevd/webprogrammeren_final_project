@@ -47,8 +47,6 @@ foreach($names as $key => $value){
 ?>
 
 
-
-
 <div class="pd-40"></div>
     <div class="row">
         <div class="game container">

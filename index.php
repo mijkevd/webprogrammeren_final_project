@@ -43,6 +43,7 @@ if (isset($_POST['submit1'])) {
         <div class="row">
             <div class="col-md-6 enter-name">
                 <form id='user-form' action="index.php" method="POST">
+
                     <div class="form-group">
                         <label for="inputname">Player 1, enter your name</label>
                         <input type="text" class="form-control" id="inputname1" name="name1">
