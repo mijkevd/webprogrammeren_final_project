@@ -28,7 +28,7 @@ include __DIR__ . '/tpl/body_start.php';
 
 <div class="pd-40"></div>
     <div class="row">
-        <div class="game col-md-6">
+        <div class="game container">
             <?php
             $stones = json_decode(file_get_contents('data/stones.json'), true);
             echo '<table>';
@@ -59,7 +59,8 @@ include __DIR__ . '/tpl/body_start.php';
 <div id="result"></div>
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
-<p id="inputname">Player One Wins: 0</p>
+
+<p id="inputname">Player < Wins: 0</p>
 <p id="inputgame">Player Two Wins: 0</p>
 </body>
 </html>
