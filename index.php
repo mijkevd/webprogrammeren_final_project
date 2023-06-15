@@ -22,17 +22,22 @@ if (isset($_POST['submit1'])) {
             $namekey = $key;
         }
     }
-    $names[$namekey] = [
-        'id' => 1,
-        'name' => $_POST['name1'],
-    ];
-    $json_file = fopen('data/names.json', 'w');
-    fwrite($json_file, json_encode($names));
-    fclose($json_file);
 
-    // Redirect to game page
-    header("Location: ./game.php");
-    die();
+    $input_name = $_POST['name1'];
+
+    if(is_string($input_name) && strlen($input_name)<11) {
+        $names[$namekey] = [
+            'id' => 1,
+            'name' => $_POST['name1'],
+        ];
+        $json_file = fopen('data/names.json', 'w');
+        fwrite($json_file, json_encode($names));
+        fclose($json_file);
+
+        // Redirect to game page
+        header("Location: ./game.php");
+        die();
+    }
 }
 ?>
 
@@ -42,10 +47,21 @@ if (isset($_POST['submit1'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-6 enter-name">
-                <form id='user-form' action="index.php" method="POST">
+                <form id='user-form' class="form-1" action="index.php" method="POST">
                     <div class="form-group">
                         <label for="inputname">Player 1, enter your name</label>
-                        <input type="text" class="form-control" id="inputname1" name="name1">
+                        <input type="text" class="form-control" id="name1" name="name1">
+                        <?php
+                        if (strlen($input_name)>=11) {
+                        echo "Name cannot be longer than 10 characters";
+                        }
+                        ?>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a name.
                     </div>
                     <button id="submit" name="submit1" type="submit" class="btn btn-primary">Add player</button>
                     <script src="js/main.js" charset="utf-8"></script>

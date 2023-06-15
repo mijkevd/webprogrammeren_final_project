@@ -1,3 +1,40 @@
+function validateName1() {
+    let name = $('#name1');
+    let nameInput = name.val();
+    let nameRegex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
+
+    if (nameInput.match(nameRegex) && nameInput !== '') {
+        // name is valid
+        name.removeClass('is-invalid');
+        name.addClass('is-valid');
+        return true;
+    } else {
+        // name is invalid
+        name.removeClass('is-valid');
+        name.addClass('is-invalid');
+        return false;
+    }
+}
+
+function submitForm1() {
+    $('.form-1').submit(function (event) {
+        let form = event.target
+        if (validateName1()) {
+            form.submit()
+            return true;
+        }
+        else {
+            event.preventDefault()
+        }
+    })
+}
+$(document).ready(function() {
+    $('#name1').keyup(function () {
+        validateName1();
+    });
+    submitForm1()
+});
+
 $(document).ready(function() {
     display_board();
     display_names();
