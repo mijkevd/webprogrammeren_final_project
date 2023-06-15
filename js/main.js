@@ -8,8 +8,8 @@ $(document).ready(function() {
 });
 
 function display_board() {
-    let board_html = $.post('interact.php', {call_now: "True"});
-    let board_container = $('#board');
+    let board_html = $.post('readboard.php', {call_now: "True"});
+    let board_container = $('#game-container');
     board_html.done(function (data) {
         board_container.empty();
         board_container.append(data.html);
@@ -109,6 +109,7 @@ const winningArrays = [ //All possible arrays to have four in a row
     }
 
     function handleClick(e) {
+        turns = turns + 1;
         const targetIndex = Array.from(slots).indexOf(e.target);
         const columnIndex = targetIndex % 7;
         let stackIndex = columnIndex + 35;
