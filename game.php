@@ -25,6 +25,29 @@ include __DIR__ . '/tpl/body_start.php';
 
 </head>
 
+<form action="index.php" type="GET">
+    <button id="submit" type="submit" class="btn btn-primary">Add player 1</button>
+</form>
+<form action="index2.php" type="GET">
+    <button id="submit" type="submit" class="btn btn-primary">Add player 2</button>
+</form>
+
+<?php
+$json_file = file_get_contents("data/names.json");
+$names = json_decode($json_file, true);
+
+foreach($names as $key => $value){
+    if ($value['id'] == 1){
+        $name_player1 = $value['name'];
+    }
+    else if ($value['id'] == 2){
+        $name_player2 = $value['name'];
+    }
+}
+?>
+
+
+
 
 <div class="pd-40"></div>
     <div class="row">
@@ -42,6 +65,7 @@ include __DIR__ . '/tpl/body_start.php';
                 $id = $stone['id'];
                 echo '<td id="'. $id. '" class="slot">';
                 echo '<button id="submit" type="submit" class="btn btn-primary">Throw stone</button>';
+                echo '</td>';
                 //echo '<td id="$stone['id']"></td>';
                 if(in_array($i, $tr_close_list)) {
                     echo '</tr>';
@@ -58,10 +82,12 @@ include __DIR__ . '/tpl/body_start.php';
 <body>
 <div class="player-turn"></div>
 <div id="result"></div>
-<button id="add-player" href="index.php">Add player</button>
+
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
-    
+
+<div class="name-container"></div>
+
 <p id="games-played">Games Played: 0</p>
 <p id="inputname">Player < Wins: 0</p>
 <p id="inputgame">Player Two Wins: 0</p>
