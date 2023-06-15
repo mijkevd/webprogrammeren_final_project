@@ -18,12 +18,12 @@ include __DIR__ . '/tpl/body_start.php';
     <div class="container">
         <div class="row">
             <div class="col-md-6 enter-name">
-                <form id='user-form' method="POST">
+                <form id='user-form' action="game.php" method="POST">
                     <div class="form-group">
                         <label for="inputname">Player 2, enter your name</label>
-                        <input type="text" class="form-control" id="inputname" name="name">
+                        <input type="text" class="form-control" id="inputname2" name="name2">
                     </div>
-                    <button id="submit" type="submit" class="btn btn-primary">Start Game</button>
+                    <button id="submit" name="submit2" type="submit" class="btn btn-primary">Add player</button>
                     <script src="main.js" charset="utf-8"></script>
                 </form>
             </div>
