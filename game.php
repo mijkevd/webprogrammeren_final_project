@@ -40,7 +40,7 @@ include __DIR__ . '/tpl/body_start.php';
                     echo '<tr>';
                 }
                 $id = $stone['id'];
-                echo '<td id="<?php echo $id; ?>" class="slot">';
+                echo '<td id="'. $id. '" class="slot">';
                 echo '<button id="submit" type="submit" class="btn btn-primary">Throw stone</button>';
                 //echo '<td id="$stone['id']"></td>';
                 if(in_array($i, $tr_close_list)) {
