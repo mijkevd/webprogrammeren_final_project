@@ -25,6 +25,19 @@ include __DIR__ . '/tpl/body_start.php';
 
 </head>
 
+<form action="index.php" type="GET">
+    <button id="submit" type="submit" class="btn btn-primary">Add player 1</button>
+</form>
+<form action="index2.php" type="GET">
+    <button id="submit" type="submit" class="btn btn-primary">Add player 2</button>
+</form>
+
+<?php
+$name_player1 = $_POST['name1'];
+$name_player2 = $_POST['name2'];
+?>
+
+
 
 <div class="pd-40"></div>
     <div class="row">
@@ -42,6 +55,7 @@ include __DIR__ . '/tpl/body_start.php';
                 $id = $stone['id'];
                 echo '<td id="'. $id. '" class="slot">';
                 echo '<button id="submit" type="submit" class="btn btn-primary">Throw stone</button>';
+                echo '</td>';
                 //echo '<td id="$stone['id']"></td>';
                 if(in_array($i, $tr_close_list)) {
                     echo '</tr>';
@@ -58,9 +72,12 @@ include __DIR__ . '/tpl/body_start.php';
 <body>
 <div class="player-turn"></div>
 <div id="result"></div>
-<button id="add-player" href="index.php">Add player</button>
+
 <button id="start-button">Start Game</button>
 <button id="stop-button" type="button">Stop Game</button>
+
+<p>Player 1: <?php echo $name_player1 ?></p>
+<p>Player 2: <?php echo $name_player2 ?></p>
     
 <p id="games-played">Games Played: 0</p>
 <p id="inputname">Player < Wins: 0</p>
