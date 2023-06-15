@@ -1,3 +1,40 @@
+function validateName1() {
+    let name = $('#name1');
+    let nameInput = name.val();
+    let nameRegex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
+
+    if (nameInput.match(nameRegex) && nameInput !== '') {
+        // name is valid
+        name.removeClass('is-invalid');
+        name.addClass('is-valid');
+        return true;
+    } else {
+        // name is invalid
+        name.removeClass('is-valid');
+        name.addClass('is-invalid');
+        return false;
+    }
+}
+
+function submitForm1() {
+    $('.form-1').submit(function (event) {
+        let form = event.target
+        if (validateName1()) {
+            form.submit()
+            return true;
+        }
+        else {
+            event.preventDefault()
+        }
+    })
+}
+$(document).ready(function() {
+    $('#name1').keyup(function () {
+        validateName1();
+    });
+    submitForm1()
+});
+
 $(document).ready(function() {
     display_board();
     display_names();
@@ -8,8 +45,8 @@ $(document).ready(function() {
 });
 
 function display_board() {
-    let board_html = $.post('interact.php', {call_now: "True"});
-    let board_container = $('#board');
+    let board_html = $.post('readboard.php', {call_now: "True"});
+    let board_container = $('#game-container');
     board_html.done(function (data) {
         board_container.empty();
         board_container.append(data.html);
@@ -109,6 +146,7 @@ const winningArrays = [ //All possible arrays to have four in a row
     }
 
     function handleClick(e) {
+        turns = turns + 1;
         const targetIndex = Array.from(slots).indexOf(e.target);
         const columnIndex = targetIndex % 7;
         let stackIndex = columnIndex + 35;
