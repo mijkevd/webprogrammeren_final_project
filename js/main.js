@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
 var currentplayer = 1
-=======
 $(document).ready(function() {
     display_board();
     window.setInterval(function () {
