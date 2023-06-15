@@ -144,14 +144,15 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('yellow') &&
                 slot4.classList.contains('yellow')
             ) {
-                const confirmed = confirm("Player 1 has won!");
-                result.textContent = "Player 1 won!";
+                const confirmed = confirm("Player " + currentplayer + " has won!");
+                result.textContent = "Player " + currentplayer + " won!";
             }
         }
     }
     
     function startGame() {
         playerTurn.textContent = "Player 1's turn";
+        var currentplayer = 1;
         slots.forEach(slot => {
             slot.style.backgroundColor = '';
             slot.classList.remove('taken');
@@ -166,13 +167,13 @@ const winningArrays = [ //All possible arrays to have four in a row
         }
     }
 
-    var playerTurn = document.querySelector('.player-turn');
+    var playerTurn = document.querySelector('.player-turn').textContent;
     const slots = document.querySelectorAll('.slot');
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", startGame);
     var result = document.querySelector('#result')
     const stopButton = document.getElementById("stop-button");
-    stopButton.addEventListener("click", stopGame);
+    stopButton.addEventListener("click", function() { stopGame(); });
     checkwins();
 });
 
