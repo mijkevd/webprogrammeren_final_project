@@ -7,7 +7,7 @@ if (isset($_POST['call_now'])) {
     // Generate HTML
     $turn_html = "";
     foreach ($names as $key => $value) {
-        $format = '<p>Player: <span class="name-player-1">%s</span></p>';
+        $format = '<p>Player: <span class="the-player">%s</span></p>';
         $turn_html .= sprintf($format, $value['turn']);
     }
     // Save html into array
