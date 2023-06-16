@@ -19,8 +19,7 @@ if (isset($_POST['call_now'])) {
             $board_html .= '<tr>';
         }
         $id = $stone['id'];
-        $board_html .=  '<td id="' . $id . '" class="slot';
-        $board_html .= $color . '">';
+        $board_html .=  '<td id="' . $id . '" class="slot">';
         $board_html .= '<button id="' . $id . '" type="submit" class="stone-button">Throw</button>';
         $board_html .= '</td>';
         if (in_array($i, $tr_close_list)) {
