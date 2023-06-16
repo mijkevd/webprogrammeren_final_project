@@ -65,10 +65,10 @@ function display_names() {
 
 function display_turn() {
     let names_html = $.post('readturn.php', {call_now: "True"});
-    let currentPlayer = $('.player-turn');
+    let Player = $('.player-turn');
     names_html.done(function (data) {
-        name_container.empty();
-        currentPlayer.append(data.html);
+        Player.empty();
+        Player.append(data.html);
     });
 }
 
@@ -173,11 +173,13 @@ const winningArrays = [ //All possible arrays to have four in a row
             if (currentplayer === 1) {
                 slots[stackIndex].style.backgroundColor = 'yellow';
                 slots[stackIndex].classList.add('yellow');
+                currentplayer = 2
                 updateTurn(2)
             } else if (currentplayer === 2) {
                 slots[stackIndex].style.backgroundColor = 'red';
                 slots[stackIndex].classList.add('red');
-               updateTurn(1)
+                currentplayer = 1;
+                updateTurn(1)
             }
             checkwins()
             // Disable click event for the current slot
@@ -189,35 +191,32 @@ const winningArrays = [ //All possible arrays to have four in a row
             }
         }
     }
-
-
-    function checkwins() {
-        for (let x = 0; x < winningArrays.length; x++) {
-            const slot1 = slots[winningArrays[x][0]]
-            const slot2 = slots[winningArrays[x][1]]
-            const slot3 = slots[winningArrays[x][2]];
-            const slot4 = slots[winningArrays[x][3]];
-            if (
-                slot1.classList.contains('red') &&
-                slot2.classList.contains('red') &&
-                slot3.classList.contains('red') &&
-                slot4.classList.contains('red')
-            ) {
-                confirm("Player 2 has won!");
-                result.textContent = "Player 2 won!";
+        function checkwins() {
+            for (let x = 0; x < winningArrays.length; x++) {
+                const slot1 = slots[winningArrays[x][0]]
+                const slot2 = slots[winningArrays[x][1]]
+                const slot3 = slots[winningArrays[x][2]];
+                const slot4 = slots[winningArrays[x][3]];
+                if (
+                    slot1.classList.contains('red') &&
+                    slot2.classList.contains('red') &&
+                    slot3.classList.contains('red') &&
+                    slot4.classList.contains('red')
+                ) {
+                    confirm("Player 2 has won!");
+                    result.textContent = "Player 2 won!";
+                } else if (
+                    slot1.classList.contains('yellow') &&
+                    slot2.classList.contains('yellow') &&
+                    slot3.classList.contains('yellow') &&
+                    slot4.classList.contains('yellow')
+                ) {
+                    confirm("Player 1 has won!");
+                    result.textContent = "Player 1 won!";
+                }
             }
-            else if (
-                slot1.classList.contains('yellow') &&
-                slot2.classList.contains('yellow') &&
-                slot3.classList.contains('yellow') &&
-                slot4.classList.contains('yellow')
-            ) {
-                confirm("Player 1 has won!");
-                result.textContent = "Player 1 won!";
-            }
+            resetGame()
         }
-        resetGame()
-    }
 
     function resetGame() {
         slots.forEach(slot => {
