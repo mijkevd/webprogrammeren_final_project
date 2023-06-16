@@ -52,28 +52,6 @@ foreach($names as $key => $value){
 <div class="pd-40"></div>
     <div class="row">
         <div id="game-container" class="game container">
-            <?php
-            $stones = json_decode(file_get_contents('data/stones.json'), true);
-            echo '<table>';
-            $i = 0;
-            $tr_list = [0, 7, 14, 21, 28, 35];
-            $tr_close_list = [6, 13, 20, 27, 34, 41];
-            foreach ($stones as $stone) {
-                if(in_array($i, $tr_list)) {
-                    echo '<tr>';
-                }
-                $id = $stone['id'];
-                echo '<td id="'. $id. '" class="slot">';
-                echo '<button id="'. $id. '" type="submit" class="btn btn-primary">Throw stone</button>';
-                echo '</td>';
-                //echo '<td id="$stone['id']"></td>';
-                if(in_array($i, $tr_close_list)) {
-                    echo '</tr>';
-                }
-                $i = $i + 1;
-            }
-            echo '</table>';
-            ?>
         </div>
         <div class="col-md-3 explanation">
             <p>
