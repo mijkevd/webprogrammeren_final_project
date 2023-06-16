@@ -77,13 +77,12 @@ foreach($names as $key => $value){
         </div>
         <div class="col-md-3 explanation">
             <p>
-                You play the game in pairs, so 1 against 1. <br />
-                Each has 21 yellow or red stones, the one with the yellow stones always starts with the first move,
-                after that it is always a turn. <br />
+                You play the game in pairs, so 1 vs 1. <br />
+                Each player has 21 stones of their color, the one with the yellow stones always starts with the first move,
+                after there are alternating turns. <br />
                 A move may not be made twice in a row. <br />
                 The person who is the first to get four stones of their color in a row wins. <br />
                 This is allowed horizontally, vertically and diagonally. <br />
-                5 in a row or more, does not count.
             </p>
         </div>
     </div>
