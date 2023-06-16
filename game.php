@@ -29,10 +29,10 @@ include __DIR__ . '/tpl/body_start.php';
 <header class="intro">Connect Four</header>
 
 <form action="index.php" type="GET">
-    <button id="submit" type="submit" class="btn btn-primary">Add player 1</button>
+    <button id="submit" type="submit" class="btn btn-primary">Add name for player 1</button>
 </form>
 <form action="index2.php" type="GET">
-    <button id="submit" type="submit" class="btn btn-primary">Add player 2</button>
+    <button id="submit" type="submit" class="btn btn-primary">Add name for player 2</button>
 </form>
 
 <?php
@@ -51,30 +51,7 @@ foreach($names as $key => $value){
 
 <div class="pd-40"></div>
     <div class="row">
-        <div id="game-container" class="game container">
-            <?php
-            $stones = json_decode(file_get_contents('data/stones.json'), true);
-            echo '<table>';
-            $i = 0;
-            $tr_list = [0, 7, 14, 21, 28, 35];
-            $tr_close_list = [6, 13, 20, 27, 34, 41];
-            foreach ($stones as $stone) {
-                if(in_array($i, $tr_list)) {
-                    echo '<tr>';
-                }
-                $id = $stone['id'];
-                echo '<td id="'. $id. '" class="slot">';
-                echo '<button id="'. $id. '" type="submit" class="btn btn-primary">Throw stone</button>';
-                echo '</td>';
-                //echo '<td id="$stone['id']"></td>';
-                if(in_array($i, $tr_close_list)) {
-                    echo '</tr>';
-                }
-                $i = $i + 1;
-            }
-            echo '</table>';
-            ?>
-        </div>
+        <div id="game-container" class="game container"></div>
         <div class="col-md-3 explanation">
             <p>
                 You play the game in pairs, so 1 vs 1. <br />
@@ -90,11 +67,15 @@ foreach($names as $key => $value){
 
 
 <body>
-<div class="player-turn"></div>
+<div class="player-turn container"></div>
 <div id="result"></div>
 
 <button id="start-button">Start Game</button>
-<button id="stop-button" type="button">Stop Game</button>
+
+<button id="stop-button" name="stop-button" type="button">Stop Game</button>
+
+
+
 
 <div class="name-container container"></div>
 
@@ -105,4 +86,6 @@ foreach($names as $key => $value){
 </div>
 </body>
 </html>
+
+
 
