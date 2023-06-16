@@ -203,7 +203,7 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('red') &&
                 slot4.classList.contains('red')
             ) {
-                const confirmed = confirm("Player 2 has won!");
+                confirm("Player 2 has won!");
                 result.textContent = "Player 2 won!";
             }
             else if (
@@ -212,18 +212,27 @@ const winningArrays = [ //All possible arrays to have four in a row
                 slot3.classList.contains('yellow') &&
                 slot4.classList.contains('yellow')
             ) {
-                const confirmed = confirm("Player 1 has won!");
+                confirm("Player 1 has won!");
                 result.textContent = "Player 1 won!";
             }
         }
+        resetGame()
     }
-    
-    function startGame() {
-        playerTurn.textContent = "Player 1's turn";
-        var currentplayer = 1;
+
+    function resetGame() {
         slots.forEach(slot => {
             slot.style.backgroundColor = '';
-            slot.classList.remove('taken');
+            slot.classList.remove('red');
+            slot.classList.remove('yellow');
+        });
+    }
+
+    function startGame() {
+        playerTurn.textContent = "Player 1's turn";
+        slots.forEach(slot => {
+            slot.style.backgroundColor = '';
+            slot.classList.remove('red');
+            slot.classList.remove('yellow');
         });
         stacking();
     }
