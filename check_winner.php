@@ -11,11 +11,6 @@ if (isset($_POST['call_now'])) {
     $json_file = file_get_contents("data/stones.json");
     $stones = json_decode($json_file, true);
 
-<<<<<<< HEAD
-=======
-    debug_to_console("Hello");
-
->>>>>>> 16df07f87a64b5bacfdacc9756cdce96cd047ef7
     $winning_arrays = [
         [0, 1, 2, 3],
         [41, 40, 39, 38],
