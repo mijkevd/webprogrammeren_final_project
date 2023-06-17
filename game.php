@@ -61,7 +61,6 @@ foreach($names as $key => $value){
 <body>
 <div class="container">Player: <span class="player-turn"></span></div>
 
-
 <button id="start-button" class="start-button">Reset game</button>
 
 <div class="container">

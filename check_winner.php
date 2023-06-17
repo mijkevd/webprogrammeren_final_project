@@ -1,12 +1,26 @@
 <?php
+<<<<<<< HEAD
+=======
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
+>>>>>>> aa3b1e5e4f76fe2b16de50eaf3ec78fcbc1e9b71
 if (isset($_POST['call_now'])) {
     $json_file = file_get_contents("data/stones.json");
     $stones = json_decode($json_file, true);
 
+<<<<<<< HEAD
     $export_data = [
         'winner' => 'no winner yet'
     ];
 
+=======
+>>>>>>> aa3b1e5e4f76fe2b16de50eaf3ec78fcbc1e9b71
     $winning_arrays = [
         [0, 1, 2, 3],
         [41, 40, 39, 38],
@@ -96,6 +110,14 @@ if (isset($_POST['call_now'])) {
             ];
         }
     }
+<<<<<<< HEAD
+=======
+    $export_data = [
+        'winner' => 'no winner yet'
+    ];
+
+    debug_to_console($export_data);
+>>>>>>> aa3b1e5e4f76fe2b16de50eaf3ec78fcbc1e9b71
 
     header('Content-Type: application/json');
     echo json_encode($export_data);
