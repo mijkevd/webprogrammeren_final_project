@@ -4,7 +4,6 @@ $page_title = 'Connect four';
 $navigation = Array(
     'active' => 'Game',
     'items' => Array(
-        'Home screen' => '../webprogrammeren_final_project/index.php',
         'Game' => '../webprogrammeren_final_project/game.php',
     )
 );
@@ -28,12 +27,6 @@ include __DIR__ . '/tpl/body_start.php';
 
 <header class="intro">Connect Four</header>
 
-<form action="index.php" type="GET">
-    <button id="submit" type="submit" class="btn btn-primary">Add player 1</button>
-</form>
-<form action="index2.php" type="GET">
-    <button id="submit" type="submit" class="btn btn-primary">Add player 2</button>
-</form>
 
 <?php
 $json_file = file_get_contents("data/names.json");
@@ -51,38 +44,14 @@ foreach($names as $key => $value){
 
 <div class="pd-40"></div>
     <div class="row">
-        <div id="game-container" class="game container">
-            <?php
-            $stones = json_decode(file_get_contents('data/stones.json'), true);
-            echo '<table>';
-            $i = 0;
-            $tr_list = [0, 7, 14, 21, 28, 35];
-            $tr_close_list = [6, 13, 20, 27, 34, 41];
-            foreach ($stones as $stone) {
-                if(in_array($i, $tr_list)) {
-                    echo '<tr>';
-                }
-                $id = $stone['id'];
-                echo '<td id="'. $id. '" class="slot">';
-                echo '<button id="'. $id. '" type="submit" class="btn btn-primary">Throw stone</button>';
-                echo '</td>';
-                //echo '<td id="$stone['id']"></td>';
-                if(in_array($i, $tr_close_list)) {
-                    echo '</tr>';
-                }
-                $i = $i + 1;
-            }
-            echo '</table>';
-            ?>
-        </div>
+        <div id="game-container" class="game container"></div>
         <div class="col-md-3 explanation">
             <p>
                 You play the game in pairs, so 1 vs 1. <br />
-                Each player has 21 stones of their color, the one with the yellow stones always starts with the first move,
-                after there are alternating turns. <br />
-                A move may not be made twice in a row. <br />
-                The person who is the first to get four stones of their color in a row wins. <br />
-                This is allowed horizontally, vertically and diagonally. <br />
+                Each player has 21 discs of their color. <br />
+                The one with the yellow discs always starts with the first move.<br />
+                The person who is the first to connect four discs of their color wins. <br />
+                This can be done horizontally, vertically and diagonally. <br />
             </p>
         </div>
     </div>
@@ -90,19 +59,24 @@ foreach($names as $key => $value){
 
 
 <body>
-<div class="player-turn"></div>
-<div id="result"></div>
+<div class="container">Player: <span class="player-turn"></span></div>
 
-<button id="start-button">Start Game</button>
-<button id="stop-button" type="button">Stop Game</button>
+
+<button id="start-button" class="start-button">Reset game</button>
+
+<div class="container">
+    <form action="index.php" type="GET">
+        <button id="submit" type="submit" class="btn btn-primary">Add/change name for player 1</button>
+    </form>
+    <form action="index2.php" type="GET">
+        <button id="submit" type="submit" class="btn btn-primary">Add/change name for player 2</button>
+    </form>
+</div>
 
 <div class="name-container container"></div>
 
-<div class="container">
-    <p id="games-played">Games Played: 0</p>
-    <p id="inputname">Player < Wins: 0</p>
-    <p id="inputgame">Player Two Wins: 0</p>
-</div>
 </body>
 </html>
+
+
 

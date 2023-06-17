@@ -4,7 +4,6 @@ $page_title = 'Connect four';
 $navigation = Array(
     'active' => 'Home screen',
 'items' => Array(
-'Home screen' => '../webprogrammeren_final_project/index.php',
 'Game' => '../webprogrammeren_final_project/game.php',
 )
 );
