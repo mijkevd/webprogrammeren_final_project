@@ -1,28 +1,34 @@
 .game {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
     background: blue;
     width: 525px;
     height: 475px;
+    border-top: 10px solid blue;
+    margin: 10px auto 10px auto;
 }
 
-.slot {
+.white {
     background-color: white;
     border-radius: 50%;
-    height: 75px;
-    width: 75px;
+    height: 72px;
+    width: 72px;
 }
 
 .red {
     background-color: red;
+    border-radius: 50%;
+    height: 72px;
+    width: 72px;
 }
 
 .yellow {
     background-color: yellow;
+    border-radius: 50%;
+    height: 72px;
+    width: 72px;
 }
 
-#start-button {
+.start-button {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
@@ -34,7 +40,7 @@
   cursor: pointer;
 }
 
-#start-button:hover {
+.start-button:hover {
   background-color: darkgreen;
 }
 
@@ -52,6 +58,14 @@
 
 #stop-button:hover {
   background-color: darkred;
+}
+
+.btn-primary {
+    margin: 5px 0 5px 0;
+}
+
+.throw {
+    opacity: 0;
 }
 
 

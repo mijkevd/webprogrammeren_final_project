@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['call_now'])) {
-    // Read articles
+    // Read names
     $json_file = file_get_contents("data/names.json");
     $names = json_decode($json_file, true);
 
