@@ -43,7 +43,8 @@ $(document).ready(function() {
     window.setInterval(function () {
         display_board();
         display_names();
-    }, 5000);
+        display_turn();
+    }, 1000);
 });
 
 
